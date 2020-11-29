@@ -3,7 +3,6 @@
 	#include <iostream>
 	#include <stdlib.h>
 	#include "output.hpp"
-	#include "source.hpp"
 	using namespace std;
 	
 
@@ -65,7 +64,12 @@ int main()
 	yyparse();
 }
 		  
+int yyerror(const char * message)
+{
+	output::errorSyn(yylineno);
+	exit(0);
+}
 		  
-		  
+	  
 		  
 		  
