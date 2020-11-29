@@ -3,6 +3,7 @@
 /* Declarations section */
 #include "tokens.hpp"
 #include "output.hpp"
+#include "parser.tab.hpp"
 
 %}
 
