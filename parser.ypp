@@ -31,6 +31,26 @@
 %token    NUM 
 %token    STRING
 
+%nonassoc ID;
+%nonassoc TRUE;
+%nonassoc FALSE;
+%nonassoc BYTE;
+%nonassoc BOOL;
+&nonassoc NUM;
+%nonassoc B;
+%nonassoc OR;                // not sure
+%nonassoc RELOPR;            // is RELOP == | != 
+%left LPAREN;
+%right RPAREN;
+%left COMMA;
+%left LBRACKET;
+%right RBRACKET;             /// not sure about LBRACKET AND LBRACKET  should be treated as LBRACE/RBARACE or LPAREN/RPAREN
+%right NOT;
+%left AND;
+%left RELOPL;               // is RELOP <= | >= | > | < should be left 
+%left ADD;                  // add is +/-       /// splitted BINOP
+%left MUL;                  // MUL is * or /
+
 %%
 
 Program:  Funcs
@@ -142,8 +162,102 @@ Statement: LBRACE Statements RBRACE
 		      output::printProductionRule(25);
 		  }
 		  
-		  
+Call:      ID LPAREN Explist RPAREN 
+          {
+			  printProductionRule(26);
+		  }
+          | ID LPAREN RPAREN 
+		  {
+			  printProductionRule(27);
+		  }
 
+Explist:    Exp 
+          {
+	          printProductionRule(28);
+		  }
+          | Exp COMMA Explist 
+		  {
+			  printProductionRule(29);
+		  }
+
+Type :      INT 
+          {
+			  printProductionRule(30);
+		  }
+          |  BYTE 
+		  {
+			  printProductionRule(31);
+		  }
+          | BOOL 
+		  {
+			  printProductionRule(32);
+		  }
+          | SET LBRACKET NUM DOTS NUM RBRACKET 
+		  {
+			  printProductionRule(33);
+		  }
+
+Exp:        LPAREN Exp RPAREN 
+          {
+			  printProductionRule(34);
+		  }
+          | Exp BINOP Exp 
+		  {
+			  printProductionRule(35);
+		  }
+          | ID 
+		  {
+			  printProductionRule(36);
+		  }
+          | Call 
+		  {
+			  printProductionRule(37);
+		  }
+          | NUM 
+		  {
+			  printProductionRule(38);
+		  }
+          | NUM B 
+		  {
+			  printProductionRule(39);
+		  }
+          | STRING 
+		  {
+			  printProductionRule(40);
+		  }
+          | TRUE 
+		  {
+			  printProductionRule(41);
+		  }
+          | FALSE 
+		  {
+			  printProductionRule(42);
+		  }
+          | NOT Exp 
+		  {
+			  printProductionRule(43);
+		  }
+          | Exp AND Exp 
+		  {
+			  printProductionRule(44);
+		  }
+          | Exp OR Exp 
+		  {
+			  printProductionRule(45);
+		  }
+          | Exp ADD Exp 
+		  {
+			  printProductionRule(46);
+		  }
+          | Exp MUL Exp 
+		  {
+			  printProductionRule(47);
+		  }
+          | LPAREN Type RPAREN Exp 
+		  {
+			  printProductionRule(48);
+		  }
+		  
 %%
 
 int main()
