@@ -31,13 +31,7 @@
 %token    NUM 
 %token    STRING
 
-%nonassoc ID;
-%nonassoc TRUE;
-%nonassoc FALSE;
-%nonassoc BYTE;
-%nonassoc BOOL;
-&nonassoc NUM;
-%nonassoc B;
+ 
 %nonassoc OR;                // not sure
 %nonassoc RELOPR;            // is RELOP == | != 
 %left LPAREN;
