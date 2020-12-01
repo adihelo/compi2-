@@ -246,15 +246,19 @@ Exp:        LPAREN Exp RPAREN
 		  }
           | Exp ADD Exp 
 		  {
-			  output::printProductionRule(46);
+			  output::printProductionRule(35);
 		  }
           | Exp MUL Exp 
 		  {
-			  output::printProductionRule(47);
+			  output::printProductionRule(35);
 		  }
           | LPAREN Type RPAREN Exp 
 		  {
 			  output::printProductionRule(48);
+		  }
+		  | Exp RELOPL Exp
+		  {
+			  output::printProductionRule(46);
 		  }
 		  
 %%
