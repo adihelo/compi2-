@@ -5,9 +5,6 @@
 	#include "output.hpp"
 	using namespace std;
 	
-
-    void printProductionRule(int ruleno);
-	void errorSyn(int lineno);
 	extern int yylex();
 	extern int yylineno;
 	int yyerror(const char * message);
@@ -166,98 +163,98 @@ Statement: LBRACE Statements RBRACE
 		  
 Call:      ID LPAREN Explist RPAREN 
           {
-			  printProductionRule(26);
+			  output::printProductionRule(26);
 		  }
           | ID LPAREN RPAREN 
 		  {
-			  printProductionRule(27);
+			  output::printProductionRule(27);
 		  }
 
 Explist:    Exp 
           {
-	          printProductionRule(28);
+	          output::printProductionRule(28);
 		  }
           | Exp COMMA Explist 
 		  {
-			  printProductionRule(29);
+			  output::printProductionRule(29);
 		  }
 
 Type :      INT 
           {
-			  printProductionRule(30);
+			  output::printProductionRule(30);
 		  }
           |  BYTE 
 		  {
-			  printProductionRule(31);
+			  output::printProductionRule(31);
 		  }
           | BOOL 
 		  {
-			  printProductionRule(32);
+			  output::printProductionRule(32);
 		  }
           | SET LBRACKET NUM DOTS NUM RBRACKET 
 		  {
-			  printProductionRule(33);
+			  output::printProductionRule(33);
 		  }
 
 Exp:        LPAREN Exp RPAREN 
           {
-			  printProductionRule(34);
+			  output::printProductionRule(34);
 		  }
           | Exp BINOP Exp 
 		  {
-			  printProductionRule(35);
+			  output::printProductionRule(35);
 		  }
           | ID 
 		  {
-			  printProductionRule(36);
+			  output::printProductionRule(36);
 		  }
           | Call 
 		  {
-			  printProductionRule(37);
+			  output::printProductionRule(37);
 		  }
           | NUM 
 		  {
-			  printProductionRule(38);
+			  output::printProductionRule(38);
 		  }
           | NUM B 
 		  {
-			  printProductionRule(39);
+			  output::printProductionRule(39);
 		  }
           | STRING 
 		  {
-			  printProductionRule(40);
+			  output::printProductionRule(40);
 		  }
           | TRUE 
 		  {
-			  printProductionRule(41);
+			  output::printProductionRule(41);
 		  }
           | FALSE 
 		  {
-			  printProductionRule(42);
+			  output::printProductionRule(42);
 		  }
           | NOT Exp 
 		  {
-			  printProductionRule(43);
+			  output::printProductionRule(43);
 		  }
           | Exp AND Exp 
 		  {
-			  printProductionRule(44);
+			  output::printProductionRule(44);
 		  }
           | Exp OR Exp 
 		  {
-			  printProductionRule(45);
+			  output::printProductionRule(45);
 		  }
           | Exp ADD Exp 
 		  {
-			  printProductionRule(46);
+			  output::printProductionRule(46);
 		  }
           | Exp MUL Exp 
 		  {
-			  printProductionRule(47);
+			  output::printProductionRule(47);
 		  }
           | LPAREN Type RPAREN Exp 
 		  {
-			  printProductionRule(48);
+			  output::printProductionRule(48);
 		  }
 		  
 %%

@@ -4,7 +4,7 @@
 #include "tokens.hpp"
 #include "output.hpp"
 #include "parser.tab.hpp"
-void errorLex(int lineno);
+
 
 %}
 
@@ -54,7 +54,7 @@ whitespace		([\r\t\n ])
 
 
 .                                           {
-	                                            errorLex(yylineno);
+	                                            output::errorLex(yylineno);
 											}
 
 %%
