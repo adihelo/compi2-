@@ -4,6 +4,7 @@
 #include "tokens.hpp"
 #include "output.hpp"
 #include "parser.tab.hpp"
+void errorLex(int lineno);
 
 %}
 
@@ -32,6 +33,7 @@ whitespace		([\r\t\n ])
 "while"                                     return WHILE;
 "break"                                     return BREAK;
 "continue"                                  return CONTINUE;
+"set"                                       return SET;
 ";"                                         return SC;
 ","                                         return COMMA;
 "("                                         return LPAREN;
@@ -39,7 +41,8 @@ whitespace		([\r\t\n ])
 "{"                                         return LBRACE;
 "}"                                         return RBRACE;
 "="                                         return ASSIGN;
-"=="|"!="|"<"|">"|"<="|">="                 return RELOP;
+"<"|">"|"<="|">="                           return RELOPL;
+"=="|"!="                                   return RELOPR;
 "+"|"-"|"*"|"/"                             return BINOP;
 \.\.                                        return DOTS;
 {letter}({letter}|{digit})*                 return ID;
@@ -47,6 +50,7 @@ whitespace		([\r\t\n ])
 \"([^\n\r\"\\]|\\[rnt"\\])+\"               return STRING;
 {whitespace}                                /* ignore */;
 "//"[^\r\n]*[\r\n|\n|\r]?                  /* ignore */;
+
 
 
 .                                           {

@@ -6,6 +6,8 @@
 	using namespace std;
 	
 
+    void printProductionRule(int ruleno);
+	void errorSyn(int lineno);
 	extern int yylex();
 	extern int yylineno;
 	int yyerror(const char * message);
@@ -30,20 +32,26 @@
 %token    ID 
 %token    NUM 
 %token    STRING
+%token    DOTS;
+%token    SET;
 
- 
 %nonassoc OR;                // not sure
 %nonassoc RELOPR;            // is RELOP == | != 
-%left LPAREN;
-%right RPAREN;
-%left COMMA;
-%left LBRACKET;
-%right RBRACKET;             /// not sure about LBRACKET AND LBRACKET  should be treated as LBRACE/RBARACE or LPAREN/RPAREN
-%right NOT;
-%left AND;
-%left RELOPL;               // is RELOP <= | >= | > | < should be left 
-%left ADD;                  // add is +/-       /// splitted BINOP
-%left MUL;                  // MUL is * or /
+%left     RELOPL;            // is RELOP <= | >= | > | < should be left 
+%left     BINOP;
+%left     LPAREN;
+%right    RPAREN;
+%left     COMMA;
+%left     LBRACKET;
+%right    RBRACKET;          /// not sure about LBRACKET AND LBRACKET  should be treated as LBRACE/RBARACE or LPAREN/RPAREN
+%right    NOT;
+%left     AND;
+%left     ADD;               // add is +/-       /// splitted BINOP
+%left     MUL;               // MUL is * or /
+%right    LBRACE 
+%left     RBRACE 
+%nonassoc IF
+%right    ELSE
 
 %%
 
