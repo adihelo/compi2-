@@ -40,10 +40,14 @@ whitespace		([\r\t\n ])
 ")"                                         return RPAREN;
 "{"                                         return LBRACE;
 "}"                                         return RBRACE;
+"["                                         return LBRACKET;
+"]"                                         return RBRACKET;
+"in"                                         return RELOPN;
 "="                                         return ASSIGN;
 "<"|">"|"<="|">="                           return RELOPL;
 "=="|"!="                                   return RELOPR;
-"+"|"-"|"*"|"/"                             return BINOP;
+\+|\-                                       return ADDSUB;
+\*|\/							            return MULDIV;
 \.\.                                        return DOTS;
 {letter}({letter}|{digit})*                 return ID;
 0|[1-9]{digit}*                             return NUM;
@@ -54,7 +58,7 @@ whitespace		([\r\t\n ])
 
 
 .                                           {
-	                                            output::errorLex(yylineno);
+	                                            output::errorLex(yylineno); exit(0);
 											}
 
 %%
